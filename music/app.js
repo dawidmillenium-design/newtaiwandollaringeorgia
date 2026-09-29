@@ -7,7 +7,7 @@ function selectTrack(i,writeHistory=true){
   selected=(i+titles.length)%titles.length;
   const id=data.ids[selected];title.textContent=titles[selected];number.textContent=`TRACK ${String(selected+1).padStart(2,'0')} / ${titles.length}`;
   note.textContent=`Version ${titles.slice(0,selected+1).filter(n=>n===titles[selected]).length} · Listen in the player below`;
-  lyrics.textContent=data.lyrics[data.index[selected]]||'';status.textContent=lyrics.textContent?'':'Lyrics are pending a privacy review for public display.';
+  lyrics.textContent=data.lyrics[data.index[selected]]||'';status.textContent=lyrics.textContent?'':'Lyrics unavailable for this track.';
   player.src=`https://suno.com/embed/${id}`;player.title=`Play ${titles[selected]} on Suno`;disc.classList.remove('playing');
   [...list.querySelectorAll('button')].forEach((b,n)=>{b.classList.toggle('active',n===selected);if(n===selected)b.setAttribute('aria-current','true');else b.removeAttribute('aria-current')});
   if(writeHistory)history.replaceState(null,'',`#track-${id}`);
@@ -24,4 +24,4 @@ document.getElementById('next').addEventListener('click',()=>selectTrack(selecte
 document.getElementById('random').addEventListener('click',()=>selectTrack((selected+1+Math.floor(Math.random()*(titles.length-1)))%titles.length));
 render();
 window.addEventListener('hashchange',()=>{const i=data?.ids.indexOf(location.hash.replace(/^#track-/,''));if(i>=0)selectTrack(i,false)});
-fetch('lyrics.json').then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()}).then(payload=>{if(payload.ids.length!==titles.length||payload.index.length!==titles.length)throw Error('Track data mismatch');data=payload;selectTrack(selected,false)}).catch(()=>{status.textContent='Lyrics are pending a privacy review for public display.'});
+fetch('lyrics.json').then(r=>{if(!r.ok)throw Error(`HTTP ${r.status}`);return r.json()}).then(payload=>{if(payload.ids.length!==titles.length||payload.index.length!==titles.length)throw Error('Track data mismatch');data=payload;selectTrack(selected,false)}).catch(()=>{status.textContent='Lyrics unavailable for this track.'});
