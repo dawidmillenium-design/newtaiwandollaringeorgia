@@ -2,7 +2,7 @@
 
 An independent, colorful music page for the 37 tracks in [SEO Hobby Expert's Suno playlist](https://suno.com/playlist/6cea695b-ef1b-4c07-b814-3b40db2662d7).
 
-Open `index.html` through a web server or GitHub Pages. Pick a track in the record crate to load its embedded Suno player without navigating away. Lyrics collected from the public song pages appear beneath the player. Search, previous, next, and random controls work on the page.
+Open `index.html` through a web server or GitHub Pages. Pick a track in the record crate to load its embedded Suno player without navigating away. Lyrics collected from the public song pages appear beneath the player. Search, previous, next, and random controls work on the page. Each title ends with a flag representing its language (a representative country, not necessarily the artist's nationality).
 
 The artist's playlist describes concerns about air conditioning at Orbi City and an elevator at Sunshine Apartment in Batumi. The site treats those as a personal account and artistic interpretation, without implying that a crime or medical cause is established.
 
