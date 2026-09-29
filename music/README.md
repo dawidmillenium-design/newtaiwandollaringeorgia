@@ -1,13 +1,15 @@
-# Batumi Apartment Story — Music
+# Batumi on Repeat
 
-A static, accessible catalog of the 38 songs in [SEO Hobby Expert's Suno playlist](https://suno.com/playlist/6cea695b-ef1b-4c07-b814-3b40db2662d7). Open `index.html` locally or publish it through GitHub Pages.
+An independent, colorful music page for the 38 tracks in [SEO Hobby Expert's Suno playlist](https://suno.com/playlist/6cea695b-ef1b-4c07-b814-3b40db2662d7).
 
-The artist's description mentions concerns about air conditioning at Orbi City and an elevator at Sunshine Apartment in Batumi. The site attributes those statements to the artist and does not present them as independently verified findings.
+Open `index.html` through a web server or GitHub Pages. Pick a track in the record crate to load its embedded Suno player and read its lyrics without navigating away. Search, previous, next, and random controls work on the page.
 
-## Music and permissions
+The artist's playlist describes concerns about air conditioning at Orbi City and an elevator at Sunshine Apartment in Batumi. The site treats those as a personal account and artistic interpretation, without implying that a crime or medical cause is established.
 
-Each song links to its original Suno page. No MP3 files or scraped audio are stored here. The creator should check the plan, download status, remix status, and Suno's current terms before distributing audio files directly or using them commercially.
+## Files
 
-## Updating the catalog
+- `index.html`: page layout and design.
+- `app.js`: track selection, search, and embedded player.
+- `lyrics.json`: lyrics displayed on the publicly accessible Suno song pages, collected September 29, 2026. Alternate versions share text where Suno shows identical lyrics. The 38 track IDs map to 19 distinct lyric sets.
 
-The ordered `names` and `ids` arrays near the end of `index.html` map each title to a Suno song URL. Keep both arrays the same length and in playlist order.
+Audio remains on Suno and is played in its embedded player; there are no MP3 copies in the repository. Check Suno's current terms and the status of each song before distributing audio directly or using it commercially.
