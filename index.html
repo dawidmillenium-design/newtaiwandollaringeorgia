@@ -36,6 +36,8 @@
       --accent:oklch(72% 0.19 55);
       --accent-glow:oklch(80% 0.17 80);
       --go:oklch(75% 0.18 150);
+      --neon-pink:oklch(65% 0.28 350);
+      --neon-cyan:oklch(85% 0.14 220);
       --line:oklch(35% 0.03 260);
       --radius:18px;
       --shadow:0 24px 60px oklch(8% 0.02 260 / .55);
@@ -147,6 +149,18 @@
     .project-card .meta{margin:.8rem 0}
     .tag{display:inline-block;background:oklch(25% 0.05 260);color:var(--ink);padding:.28rem .6rem;font-size:.72rem;margin:0 .4rem .4rem 0;border-radius:999px;font-family:var(--mono);letter-spacing:.03em}
 
+    /* Game card: funky neon variant */
+    .project-card.game-card{background:linear-gradient(160deg,oklch(24% 0.09 310),oklch(18% 0.07 280));color:var(--ink);border:1px solid oklch(65% 0.28 350 / .6)}
+    .project-card.game-card::before{background:linear-gradient(90deg,var(--neon-pink),var(--neon-cyan))}
+    .project-card.game-card p{color:oklch(80% 0.05 280)}
+    .project-card.game-card h3{color:var(--ink)}
+    .game-card .new-badge{position:absolute;top:1rem;right:-2.4rem;transform:rotate(35deg);background:linear-gradient(90deg,var(--neon-pink),var(--accent));color:#fff;font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.15em;padding:.25rem 2.6rem;box-shadow:0 4px 14px oklch(65% 0.28 350 / .6);animation:badge-pulse 1.8s ease-in-out infinite}
+    @keyframes badge-pulse{50%{filter:brightness(1.25)}}
+    .game-card .tag{background:oklch(65% 0.28 350 / .25);border:1px solid oklch(65% 0.28 350 / .5)}
+    .game-card .cta{background:linear-gradient(90deg,oklch(60% 0.26 350),oklch(70% 0.2 30));color:#fff;border-color:oklch(65% 0.28 350)}
+    .game-card:hover .cta .ring{border-color:#fff}
+    .game-card:hover .cta .ring::after{background:#fff;box-shadow:0 0 10px #fff}
+
     /* Call button CTA */
     .cta{display:inline-flex;align-items:center;gap:.55rem;margin-top:.6rem;padding:.65rem 1.2rem;background:oklch(25% 0.05 260);color:var(--accent-glow);font-weight:700;border-radius:999px;border:1px solid oklch(45% 0.06 260);transition:all .25s;position:relative}
     .cta .ring{width:.9em;height:.9em;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;transition:all .25s}
@@ -248,6 +262,19 @@
     <h2 class="section-title reveal"><span class="dot"></span> Press a button — choose your floor</h2>
 
     <section class="projects">
+      <a href="elevator-game.html" class="project-card game-card reveal">
+        <span class="new-badge">NEW · PLAY</span>
+        <h3><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 6h10a5 5 0 015 5v3a4 4 0 01-7.2 2.4L13.5 15h-3l-1.3 1.4A4 4 0 012 14v-3a5 5 0 015-5zm0 3v2H5v2h2v2h2v-2h2v-2H9V9zm9 .5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4zm2.5 2.5a1.2 1.2 0 100 2.4 1.2 1.2 0 000-2.4z" fill="currentColor"/></svg> Elevator Hero — The Game</h3>
+        <p>A blogger rides the Orbi City lift to floor 7 for the Black Sea sunset — but a 5G hacker is watching on an old CRT monitor and jams the signal between floors 4 and 5.</p>
+        <p>Spam the OVERRIDE button, beat the jam, and ding your way to the top. Pure HTML, CSS and animated SVG — no installs.</p>
+        <div class="meta">
+          <span class="tag">Mini-game</span>
+          <span class="tag">Blogger vs 5G hacker</span>
+          <span class="tag">Funky CSS + SVG</span>
+        </div>
+        <span class="cta"><span class="ring" aria-hidden="true"></span> ▶ Play Elevator Hero <svg class="svg-icon arrow-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l7 8h-4v8h-6v-8H5z" fill="currentColor"/></svg></span>
+      </a>
+
       <a href="music/" class="project-card reveal">
         <h3><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3z" fill="currentColor"/></svg> Batumi on Repeat</h3>
         <p>Explore 37 AI-generated songs inspired by a Batumi apartment story, available in 16+ languages (Hungarian, Hebrew, Turkish, French, English, Czech, Chinese, Azerbaijani, Russian, Japanese, Portuguese, Spanish, Polish, Italian, Korean, German, and more).</p>
@@ -326,7 +353,7 @@
         var s = document.createElement('span');
         s.className = 'ch wave';
         s.setAttribute('aria-hidden', 'true');
-        s.textContent = chr === ' ' ? '\u00A0' : chr;
+        s.textContent = chr === ' ' ? ' ' : chr;
         s.style.animationDelay = (0.05 * i) + 's, ' + (1 + 0.08 * i) + 's';
         h.appendChild(s);
         i++;
