@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#1f4fd8">
+  <meta name="theme-color" content="#0b1020">
 
   <!-- Primary Meta Tags -->
   <title>New Taiwan Dollar in Georgia — Batumi Music Projects</title>
@@ -26,59 +26,175 @@
   <meta name="twitter:description" content="Creative music projects and travel stories from Batumi, Georgia: 37 multilingual songs and 42 global grooves.">
 
   <style>
+    /* ===== Elevator theme — modern CSS (custom properties, oklch, color-mix, grid, :has, scroll-driven reveals) ===== */
     :root{
-      --blue:#1f4fd8;
-      --ink:#14181f;
-      --muted:#5b6472;
-      --paper:#f5f7fb;
-      --card:#ffffff;
-      --line:#e2e5ea;
+      --bg:oklch(16% 0.03 260);
+      --bg-2:oklch(22% 0.04 260);
+      --panel:oklch(96% 0.01 250);
+      --panel-ink:oklch(25% 0.03 260);
+      --ink:oklch(92% 0.02 260);
+      --muted:oklch(70% 0.03 260);
+      --steel:oklch(60% 0.02 260);
+      --accent:oklch(72% 0.19 55);        /* call-button amber */
+      --accent-glow:oklch(80% 0.17 80);
+      --go:oklch(75% 0.18 150);           /* going-up green */
+      --line:oklch(35% 0.03 260);
+      --radius:18px;
+      --shadow:0 24px 60px oklch(8% 0.02 260 / .55);
+      --font:"Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+      --mono:ui-monospace,"SF Mono","Cascadia Mono",Consolas,monospace;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}
-    header{background:var(--blue);color:#fff;text-align:center;padding:3.5rem 2rem}
-    header h1{font-size:clamp(2rem,5vw,3.2rem);margin-bottom:.5rem}
-    header p{color:rgba(255,255,255,.85);font-size:1.1rem}
-    main{max-width:1000px;margin:0 auto;padding:2.5rem 2rem}
-    .intro{margin-bottom:2.5rem}
-    .intro h2{color:var(--blue);margin-bottom:.75rem}
-    .intro p{max-width:720px;margin-bottom:1rem;color:var(--ink)}
-    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem}
-    .project-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:1.75rem;color:var(--ink);text-decoration:none;box-shadow:0 2px 8px rgba(20,24,31,.06);transition:transform .2s,box-shadow .2s}
-    .project-card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(20,24,31,.12)}
-    .project-card h3{margin-bottom:.75rem;font-size:1.35rem}
-    .project-card p{margin-bottom:.75rem;color:var(--muted)}
-    .project-card .meta{margin:1rem 0}
-    .project-card .cta{display:inline-block;margin-top:1rem;padding:.6rem 1.2rem;background:var(--blue);color:white;text-decoration:none;font-weight:600;border-radius:4px;transition:all .2s}
-    .project-card .cta:hover{background:var(--ink)}
-    footer{background:var(--blue);color:white;padding:2rem;text-align:center;margin-top:3rem;border-top:4px solid var(--ink)}
-    footer p{margin:0;font-size:.9rem}
-    .tag{display:inline-block;background:var(--blue);color:white;padding:.3rem .6rem;font-size:.75rem;margin-right:.5rem;margin-bottom:.5rem;border-radius:3px}
-    .float-video{position:fixed;right:1rem;bottom:1rem;width:300px;z-index:50;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(20,24,31,.28)}
-    .float-video .fv-bar{display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--blue);color:#fff;padding:.45rem .7rem;font-size:.8rem;font-weight:600}
-    .float-video .fv-bar a{color:#fff;text-decoration:underline}
-    .float-video .fv-close{border:0;background:transparent;color:#fff;font-size:1rem;line-height:1;cursor:pointer;padding:.1rem .3rem}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:
+      radial-gradient(1200px 600px at 80% -10%,oklch(30% 0.06 260 / .8),transparent 60%),
+      radial-gradient(900px 500px at 0% 110%,oklch(28% 0.05 230 / .7),transparent 60%),
+      var(--bg);
+      color:var(--ink);line-height:1.6;min-height:100vh}
+    a{color:inherit}
+    :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+    /* ===== Animated SVG icons ===== */
+    .svg-icon{width:1.15em;height:1.15em;vertical-align:-.2em}
+    .arrow-up{animation:nudge-up 1.6s ease-in-out infinite}
+    .arrow-down{animation:nudge-down 1.6s ease-in-out infinite}
+    @keyframes nudge-up{0%,100%{transform:translateY(0);opacity:.75}50%{transform:translateY(-3px);opacity:1}}
+    @keyframes nudge-down{0%,100%{transform:translateY(0);opacity:.75}50%{transform:translateY(3px);opacity:1}}
+
+    /* Elevator cabin riding inside its shaft (SVG shapes animated with CSS transforms) */
+    .lift-shaft{width:clamp(120px,16vw,180px);height:auto;filter:drop-shadow(0 10px 24px oklch(0% 0 0 / .5))}
+    .lift-cabin{animation:ride 9s cubic-bezier(.65,0,.35,1) infinite}
+    @keyframes ride{0%,12%{transform:translateY(0)}38%,55%{transform:translateY(-92px)}88%,100%{transform:translateY(0)}}
+    .lift-door-l{animation:door-l 9s ease-in-out infinite}
+    .lift-door-r{animation:door-r 9s ease-in-out infinite}
+    @keyframes door-l{0%,10%,38%,55%,88%,100%{transform:translateX(0)}14%,34%,59%,84%{transform:translateX(-13px)}}
+    @keyframes door-r{0%,10%,38%,55%,88%,100%{transform:translateX(0)}14%,34%,59%,84%{transform:translateX(13px)}}
+    .lift-light{animation:blink 9s steps(1) infinite}
+    @keyframes blink{0%,12%,38%,88%,100%{opacity:1}56%,87%{opacity:.25}}
+
+    /* Floor indicator digits */
+    .floor-display{font-family:var(--mono);background:oklch(10% 0.02 260);border:1px solid var(--line);border-radius:10px;padding:.15em .6em;color:var(--go);text-shadow:0 0 12px oklch(75% 0.18 150 / .8);font-size:clamp(1.6rem,4vw,2.4rem);letter-spacing:.08em;display:inline-flex;align-items:center;gap:.4em}
+    .floor-digit{display:inline-block;animation:floor-count 9s steps(1) infinite}
+    @keyframes floor-count{0%,12%{transform:translateY(0)}13%,37%{content:""}}
+
+    /* ===== Page-load elevator doors ===== */
+    .doors{position:fixed;inset:0;z-index:100;pointer-events:none;display:flex}
+    .doors span{flex:1;background:linear-gradient(100deg,oklch(45% 0.02 260),oklch(65% 0.02 260) 45%,oklch(50% 0.02 260));animation:door-open 1.4s cubic-bezier(.7,0,.3,1) .2s forwards}
+    .doors span:last-child{animation-name:door-open-r}
+    @keyframes door-open{to{transform:translateX(-101%)}}
+    @keyframes door-open-r{to{transform:translateX(101%)}}
+
+    /* ===== Header: the lift lobby ===== */
+    header{padding:4rem 1.5rem 3rem;text-align:center;position:relative}
+    .lobby{display:flex;align-items:center;justify-content:center;gap:clamp(1rem,4vw,3rem);flex-wrap:wrap}
+    header h1{font-size:clamp(2rem,5.5vw,3.4rem);letter-spacing:-.02em;margin:.6rem 0}
+    header h1 .shine{background:linear-gradient(100deg,var(--ink) 30%,var(--accent-glow) 50%,var(--ink) 70%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+    @keyframes shine{to{background-position:-200% 0}}
+    .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.35em;font-size:.75rem;color:var(--muted)}
+    header p.tagline{color:var(--muted);font-size:1.1rem;max-width:560px;margin:0 auto}
+
+    /* ===== Main ===== */
+    main{max-width:1060px;margin:0 auto;padding:1rem 1.5rem 3rem}
+    .intro{background:oklch(22% 0.035 260 / .75);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;margin-bottom:2.5rem;backdrop-filter:blur(6px)}
+    .intro h2{color:var(--accent-glow);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+    .intro p{max-width:760px;margin-bottom:1rem;color:var(--ink)}
+    .intro strong{color:var(--accent)}
+
+    .section-title{display:flex;align-items:center;gap:.6rem;font-size:1.4rem;margin:0 0 1.2rem;color:var(--ink)}
+    .section-title .dot{width:.55em;height:.55em;border-radius:50%;background:var(--go);box-shadow:0 0 10px var(--go);animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{50%{opacity:.4}}
+
+    /* ===== Project cards as elevator call panels ===== */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.6rem}
+    .project-card{position:relative;display:block;background:linear-gradient(160deg,oklch(96% 0.01 250),oklch(88% 0.015 250));color:var(--panel-ink);border-radius:var(--radius);padding:1.6rem;text-decoration:none;box-shadow:var(--shadow);border:1px solid oklch(100% 0 0 / .4);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s;overflow:hidden}
+    .project-card::before{content:"";position:absolute;inset:0 0 auto;height:4px;background:linear-gradient(90deg,var(--accent),var(--accent-glow));transform:scaleX(0);transform-origin:left;transition:transform .35s}
+    .project-card:hover{transform:translateY(-6px);box-shadow:0 32px 70px oklch(8% 0.02 260 / .65)}
+    .project-card:hover::before{transform:scaleX(1)}
+    .project-card h3{margin-bottom:.6rem;font-size:1.3rem;display:flex;align-items:center;gap:.5rem}
+    .project-card p{margin-bottom:.7rem;color:oklch(40% 0.03 260);font-size:.97rem}
+    .project-card .meta{margin:.8rem 0}
+    .tag{display:inline-block;background:oklch(25% 0.05 260);color:var(--ink);padding:.28rem .6rem;font-size:.72rem;margin:0 .4rem .4rem 0;border-radius:999px;font-family:var(--mono);letter-spacing:.03em}
+
+    /* Call button CTA */
+    .cta{display:inline-flex;align-items:center;gap:.55rem;margin-top:.6rem;padding:.65rem 1.2rem;background:oklch(25% 0.05 260);color:var(--accent-glow);font-weight:700;border-radius:999px;border:1px solid oklch(45% 0.06 260);transition:all .25s;position:relative}
+    .cta .ring{width:.9em;height:.9em;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;transition:all .25s}
+    .cta .ring::after{content:"";width:.4em;height:.4em;border-radius:50%;background:var(--accent);opacity:.35;transition:all .25s}
+    .project-card:hover .cta{background:oklch(20% 0.04 260);border-color:var(--accent)}
+    .project-card:hover .cta .ring{box-shadow:0 0 0 4px oklch(72% 0.19 55 / .25)}
+    .project-card:hover .cta .ring::after{opacity:1;box-shadow:0 0 10px var(--accent)}
+
+    /* Reveal on scroll (scroll-driven where supported, IO fallback below) */
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+    .reveal.in{opacity:1;transform:none}
+
+    /* ===== Floating video (bottom-right) ===== */
+    .float-video{position:fixed;right:1rem;bottom:1rem;width:300px;z-index:50;background:var(--panel);color:var(--panel-ink);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);border:1px solid oklch(100% 0 0 / .5)}
+    .float-video .fv-bar{display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:oklch(25% 0.05 260);color:var(--ink);padding:.45rem .7rem;font-size:.8rem;font-weight:600}
+    .float-video .fv-bar a{color:var(--accent-glow);text-decoration:underline}
+    .float-video .fv-close{border:0;background:transparent;color:var(--ink);font-size:1rem;line-height:1;cursor:pointer;padding:.1rem .3rem}
     .float-video video{display:block;width:100%;background:#000}
     .float-video.hidden{display:none}
-    @media(max-width:768px){header h1{font-size:1.8rem}main{padding:2rem 1rem}.projects{grid-template-columns:1fr}.float-video{width:220px;right:.6rem;bottom:.6rem}}
+
+    footer{margin-top:2rem;padding:2.2rem 1.5rem;text-align:center;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    footer strong{color:var(--ink)}
+    footer a{color:var(--accent-glow)}
+
+    @media(max-width:640px){.float-video{width:220px;right:.6rem;bottom:.6rem}main{padding:1rem 1rem 2.5rem}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}.doors{display:none}.reveal{opacity:1;transform:none}}
   </style>
 </head>
 <body>
+  <!-- Page-load elevator doors -->
+  <div class="doors" aria-hidden="true"><span></span><span></span></div>
+
   <header>
-    <h1>New Taiwan Dollar in Georgia</h1>
-    <p>Creative music projects &amp; travel stories from Batumi</p>
+    <div class="lobby">
+      <!-- Animated SVG: elevator cabin riding in its shaft -->
+      <svg class="lift-shaft" viewBox="0 0 120 200" role="img" aria-label="Animated elevator icon">
+        <defs>
+          <linearGradient id="shaft" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#39415a"/><stop offset=".5" stop-color="#5a647f"/><stop offset="1" stop-color="#39415a"/>
+          </linearGradient>
+          <linearGradient id="cabin" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#c9d2e4"/><stop offset=".5" stop-color="#f2f5fa"/><stop offset="1" stop-color="#c9d2e4"/>
+          </linearGradient>
+        </defs>
+        <rect x="8" y="4" width="104" height="192" rx="10" fill="url(#shaft)" stroke="#20263a" stroke-width="3"/>
+        <line x1="60" y1="8" x2="60" y2="192" stroke="#20263a" stroke-width="1.5" stroke-dasharray="4 6" opacity=".6"/>
+        <g class="lift-cabin">
+          <rect x="24" y="132" width="72" height="56" rx="6" fill="url(#cabin)" stroke="#20263a" stroke-width="3"/>
+          <g class="lift-door-l"><rect x="28" y="136" width="31" height="48" rx="3" fill="#8f9ab3" stroke="#20263a" stroke-width="2"/></g>
+          <g class="lift-door-r"><rect x="61" y="136" width="31" height="48" rx="3" fill="#8f9ab3" stroke="#20263a" stroke-width="2"/></g>
+          <circle class="lift-light" cx="60" cy="128" r="4" fill="#ffd166"/>
+        </g>
+        <rect x="40" y="12" width="40" height="14" rx="4" fill="#101528" stroke="#20263a" stroke-width="2"/>
+        <text x="60" y="23" text-anchor="middle" font-family="monospace" font-size="10" fill="#7ef0a0">TWN</text>
+      </svg>
+      <div>
+        <span class="eyebrow">Batumi · Georgia · Black Sea</span>
+        <h1><span class="shine">New Taiwan Dollar in Georgia</span></h1>
+        <p class="tagline">Creative music projects &amp; travel stories from Batumi — take the lift.</p>
+        <p style="margin-top:1rem"><span class="floor-display" aria-label="Floor indicator">
+          <svg class="svg-icon arrow-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l7 8h-4v8h-6v-8H5z" fill="currentColor"/></svg>
+          <span class="floor-digit">G</span>
+          <svg class="svg-icon arrow-down" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20l-7-8h4V4h6v8h4z" fill="currentColor"/></svg>
+        </span></p>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section class="intro">
-      <h2>Welcome</h2>
+    <section class="intro reveal">
+      <h2><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a2 2 0 012 2v18l-3-2-2 2-2-2-2 2-2-2-3 2V4a2 2 0 012-2zm1 5h8v2H8zm0 4h8v2H8z" fill="currentColor"/></svg> Welcome</h2>
       <p>This collection brings together music projects inspired by life and travel in Batumi, Georgia. Each project is an interactive exploration of how the same story or theme can be told through multiple musical voices, languages, and genres.</p>
       <p><strong>Repository info:</strong> New Passport with 15 younger picture = you were legitimately in Batumi; coffee = a real 1 GEL local payment; "TWN" = a broken currency tag on an otherwise correct amount. Fix it with the bank, not with a fraud report.</p>
     </section>
 
+    <h2 class="section-title reveal"><span class="dot"></span> Press a button — choose your floor</h2>
+
     <section class="projects">
-      <a href="music/" class="project-card">
-        <h3>🎵 Batumi on Repeat</h3>
+      <a href="music/" class="project-card reveal">
+        <h3><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10.55A4 4 0 1014 17V7h4V3z" fill="currentColor"/></svg> Batumi on Repeat</h3>
         <p>Explore 37 AI-generated songs inspired by a Batumi apartment story, available in 16+ languages (Hungarian, Hebrew, Turkish, French, English, Czech, Chinese, Azerbaijani, Russian, Japanese, Portuguese, Spanish, Polish, Italian, Korean, German, and more).</p>
         <p>Each track is a unique interpretation of the same narrative, celebrating linguistic and musical diversity.</p>
         <div class="meta">
@@ -86,11 +202,11 @@
           <span class="tag">Multilingual</span>
           <span class="tag">Interactive player</span>
         </div>
-        <span class="cta">Enter the Record Crate →</span>
+        <span class="cta"><span class="ring" aria-hidden="true"></span> Enter the Record Crate <svg class="svg-icon arrow-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l7 8h-4v8h-6v-8H5z" fill="currentColor"/></svg></span>
       </a>
 
-      <a href="music2/" class="project-card">
-        <h3>🌍 World Groove Vol. 02</h3>
+      <a href="music2/" class="project-card reveal">
+        <h3><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm7 9h-3a8 8 0 00-1.2-3.3A8.03 8.03 0 0119 11zM12 4a8 8 0 011.9 3h-3.8A8 8 0 0112 4zM5 13h3a8 8 0 001.2 3.3A8.03 8.03 0 015 13zm3-2H5a8.03 8.03 0 014.2-4.7A8 8 0 008 11zm4 9a8 8 0 01-1.9-3h3.8A8 8 0 0112 20zm1.5-6h-3V9h3z" fill="currentColor"/></svg> World Groove Vol. 02</h3>
         <p>One beach. Forty-two musical interpretations. Dive into diverse genres—afrobeat, house, folk, hip-hop, disco, rock, and global grooves—all inspired by beach themes.</p>
         <p>Two songs explored through radically different musical styles, showcasing how AI can interpret the same creative brief in limitless ways.</p>
         <div class="meta">
@@ -98,11 +214,11 @@
           <span class="tag">Multi-genre</span>
           <span class="tag">Interactive player</span>
         </div>
-        <span class="cta">Explore the World Groove →</span>
+        <span class="cta"><span class="ring" aria-hidden="true"></span> Explore the World Groove <svg class="svg-icon arrow-up" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l7 8h-4v8h-6v-8H5z" fill="currentColor"/></svg></span>
       </a>
 
-      <a href="blog/" class="project-card">
-        <h3>📝 Batumi Money Stories</h3>
+      <a href="blog/" class="project-card reveal">
+        <h3><svg class="svg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h16a1 1 0 011 1v16l-4-3-4 3-4-3-4 3V4a1 1 0 011-1zm3 5h10v2H7zm0 4h10v2H7z" fill="currentColor"/></svg> Batumi Money Stories</h3>
         <p>Blog posts from Batumi: the ghost currency on a bank statement, a traveller's guide to Georgian lari, DCC traps, and payment-system oddities.</p>
         <p>The case file behind the "New Taiwan Dollar" name, in readable form.</p>
         <div class="meta">
@@ -110,7 +226,7 @@
           <span class="tag">Travel</span>
           <span class="tag">Money</span>
         </div>
-        <span class="cta">Read the blog →</span>
+        <span class="cta"><span class="ring" aria-hidden="true"></span> Read the blog <svg class="svg-icon arrow-down" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20l-7-8h4V4h6v8h4z" fill="currentColor"/></svg></span>
       </a>
     </section>
   </main>
@@ -122,14 +238,28 @@
 
   <footer>
     <p><strong>New Taiwan Dollar in Georgia</strong> — Creative music projects by dawidmillenium-design</p>
-    <p style="margin-top:.5rem;font-size:.85rem">Music powered by Suno | All tracks are AI-generated | Repository: <a href="https://github.com/dawidmillenium-design/newtaiwandollaringeorgia" style="color:inherit;text-decoration:underline">github.com/dawidmillenium-design/newtaiwandollaringeorgia</a></p>
+    <p style="margin-top:.5rem;font-size:.85rem">Music powered by Suno | All tracks are AI-generated | Repository: <a href="https://github.com/dawidmillenium-design/newtaiwandollaringeorgia">github.com/dawidmillenium-design/newtaiwandollaringeorgia</a></p>
   </footer>
+
   <script>
+    // Close button for the floating video
     document.getElementById('fv-close').addEventListener('click', function () {
       var box = document.getElementById('float-video');
       box.querySelector('video').pause();
       box.classList.add('hidden');
     });
+    // Scroll reveal (IntersectionObserver fallback for browsers without scroll-driven animations)
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    // Animated floor digit on the header display (G -> 1..7 -> G)
+    (function () {
+      var digit = document.querySelector('.floor-digit');
+      var floors = ['G', '1', '2', '3', '4', '5', '6', '7', '7', '6', '5', '4', '3', '2', '1'];
+      var i = 0;
+      setInterval(function () { i = (i + 1) % floors.length; digit.textContent = floors[i]; }, 1100);
+    })();
   </script>
 </body>
 </html>
