@@ -54,7 +54,13 @@
     footer{background:var(--blue);color:white;padding:2rem;text-align:center;margin-top:3rem;border-top:4px solid var(--ink)}
     footer p{margin:0;font-size:.9rem}
     .tag{display:inline-block;background:var(--blue);color:white;padding:.3rem .6rem;font-size:.75rem;margin-right:.5rem;margin-bottom:.5rem;border-radius:3px}
-    @media(max-width:768px){header h1{font-size:1.8rem}main{padding:2rem 1rem}.projects{grid-template-columns:1fr}}
+    .float-video{position:fixed;right:1rem;bottom:1rem;width:300px;z-index:50;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 12px 32px rgba(20,24,31,.28)}
+    .float-video .fv-bar{display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--blue);color:#fff;padding:.45rem .7rem;font-size:.8rem;font-weight:600}
+    .float-video .fv-bar a{color:#fff;text-decoration:underline}
+    .float-video .fv-close{border:0;background:transparent;color:#fff;font-size:1rem;line-height:1;cursor:pointer;padding:.1rem .3rem}
+    .float-video video{display:block;width:100%;background:#000}
+    .float-video.hidden{display:none}
+    @media(max-width:768px){header h1{font-size:1.8rem}main{padding:2rem 1rem}.projects{grid-template-columns:1fr}.float-video{width:220px;right:.6rem;bottom:.6rem}}
   </style>
 </head>
 <body>
@@ -109,9 +115,21 @@
     </section>
   </main>
 
+  <aside class="float-video" id="float-video" aria-label="Featured video: Dirty Dianna Elevator Hero">
+    <div class="fv-bar"><span>🎬 Dirty Dianna — Elevator Hero</span><a href="music/videos.html" title="Watch all 35 videos">all 35</a><button type="button" class="fv-close" id="fv-close" aria-label="Close video">✕</button></div>
+    <video controls preload="metadata" playsinline src="dirty%20diannnna%20elevator%20hero%2035.mp4">Your browser does not support the video tag.</video>
+  </aside>
+
   <footer>
     <p><strong>New Taiwan Dollar in Georgia</strong> — Creative music projects by dawidmillenium-design</p>
     <p style="margin-top:.5rem;font-size:.85rem">Music powered by Suno | All tracks are AI-generated | Repository: <a href="https://github.com/dawidmillenium-design/newtaiwandollaringeorgia" style="color:inherit;text-decoration:underline">github.com/dawidmillenium-design/newtaiwandollaringeorgia</a></p>
   </footer>
+  <script>
+    document.getElementById('fv-close').addEventListener('click', function () {
+      var box = document.getElementById('float-video');
+      box.querySelector('video').pause();
+      box.classList.add('hidden');
+    });
+  </script>
 </body>
 </html>
