@@ -1,82 +1,9 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f6ff62">
-  <meta name="description" content="42 Beach music interpretations across world styles; from Afrobeat to folk, disco to rock.">
-  <title>World Groove Vol. 02</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap');
-    :root{--cream:#f6ff62;--paper:#fff;--dark:#1a1a1a;--line:#1a1a1a;--shadow:6px 6px 0 var(--line)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--dark);background:var(--cream);font:16px/1.5 'DM Sans',system-ui,sans-serif}button,input{font:inherit}button{cursor:pointer}
-    header{padding:1rem 0;border-bottom:3px solid var(--line);background:white}.brand{font-size:1.3rem;font-weight:800;text-decoration:none;color:var(--dark);letter-spacing:.05em}nav{margin-top:1rem}nav a{display:inline-block;margin-right:1.5rem;text-decoration:none;color:var(--dark);font-weight:500}nav a:hover{text-decoration:underline}
-    main{padding:2rem}
-    .hero{padding:3rem 0;border-bottom:3px solid var(--line)}.hero h1{margin:0 0 1.5rem;font-size:clamp(2rem,7vw,4rem);line-height:1.1;font-weight:800;font-family:'Space Grotesk',sans-serif}.hero .eyebrow{font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;margin-bottom:.5rem;display:block}
-    .hero .intro{font-size:1.1rem;max-width:600px;line-height:1.6;margin:1rem 0}
-    .ribbon{background:var(--dark);color:var(--cream);padding:1rem;text-align:center;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:2rem 0;border-top:3px solid var(--line);border-bottom:3px solid var(--line)}
-    .collection{margin:2rem 0}.section-head{margin-bottom:2rem}.section-head h2{margin:0;font-size:2rem;font-weight:800}.section-head .eyebrow{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;font-weight:500}
-    #library{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
-    #library .track-card{padding:1.5rem;background:white;border:3px solid var(--line);box-shadow:var(--shadow);cursor:pointer;transition:all .2s}
-    #library .track-card:hover{transform:translateY(-4px);box-shadow:8px 8px 0 var(--line)}
-    #library .track-card h3{margin:0 0 .5rem;font-size:1rem}
-    #library .track-card p{margin:0;font-size:.85rem;color:#666}
-    .note{padding:2rem;background:white;border:3px solid var(--line);box-shadow:var(--shadow);margin:2rem 0}
-    .note h2{margin-top:0;font-size:1.5rem}
-    footer{padding:2rem;text-align:center;font-weight:700;letter-spacing:.05em;border-top:3px solid var(--line);background:white}
-    .player{position:fixed;bottom:0;left:0;right:0;background:var(--dark);color:var(--cream);padding:1.5rem;border-top:3px solid var(--line);box-shadow:0 -4px 12px rgba(0,0,0,.3);z-index:100}
-    .now{max-width:1200px;margin:0 auto}
-    .mini-disc{display:inline-block;margin-right:1rem;font-size:2rem;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
-    .player button{background:var(--cream);color:var(--dark);border:2px solid var(--cream);padding:.6rem 1rem;margin-right:.5rem;margin-top:.5rem;font-weight:600}
-    .player button:hover{background:var(--dark);color:var(--cream);border-color:var(--cream)}
-    @media(max-width:850px){#library{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.player{padding:1rem}.player button{font-size:.9rem;padding:.5rem .8rem}}
-    @media(max-width:540px){main{padding:1rem}.hero h1{font-size:1.5rem}.ribbon{font-size:.8rem;padding:.8rem}.player{padding:.8rem}.player button{display:block;width:100%;margin-bottom:.5rem}}
-    @media(prefers-reduced-motion:reduce){.mini-disc{animation:none}}
-  </style>
-</head>
-<body>
-  <a class="skip" href="#library">Skip to playlist</a>
-  <header>
-    <div style="max-width:1200px;margin:auto;padding:0 1rem">
-      <a class="brand" href="#">◎ WORLD GROOVE</a>
-      <nav aria-label="Main">
-        <a href="../music/">Batumi playlist ↗</a>
-        <a href="#library">Tracks</a>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <section class="hero">
-      <div style="max-width:1200px;margin:0 auto">
-        <p class="eyebrow">SEO HOBBY EXPERT PRESENTS / VOLUME 02</p>
-        <h1>ONE WORLD.<br><span>MANY MUSIC</span><br>STYLES.</h1>
-        <p class="intro">One beach. Forty-two different musical interpretations. Explore "Beach Please (Boracay Sunrise)" and "Life Is a Beach" across afrobeat, house, folk, hip-hop, disco, rock, and global grooves.</p>
-      </div>
-    </section>
-    <div class="ribbon">AFROBEAT ✦ HOUSE ✦ FOLK ✦ HIP-HOP ✦ DISCO ✦ ROCK ✦ GLOBAL GROOVES</div>
-    <section class="collection" id="library">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">PICK YOUR NEXT DESTINATION</p>
-          <h2>The record crate<span>.</span></h2>
-        </div>
-        <label>Find a groove<input type="text" placeholder="Search by style or title..."></label>
-      </div>
-    </section>
-    <section class="note">
-      <h2>Same sunrise. A world of interpretations.</h2>
-      <p>Explore Beach Please (Boracay Sunrise) and Life Is a Beach in 42 versions. Style labels come from the supplied filenames; they reflect how AI interpreted the prompt. No specific artist, no copyright claims. This playlist is a celebration of creative variation and global musical diversity.</p>
-    </section>
-  </main>
-  <footer>ONE WORLD, MANY MUSIC STYLES ✦ MADE FOR LISTENING EVERYWHERE.</footer>
-  <section class="player" aria-label="Music player">
-    <div class="now"><span class="mini-disc" aria-hidden="true">◎</span><div><p class="eyebrow">NOW ON THE TURNTABLE</p><strong id="now-title">Choose a track to play</strong></div></div>
-    <div><button id="play-btn">▶ Play</button><button id="pause-btn">⏸ Pause</button><button id="next-track">Next Track →</button></div>
-  </section>
-  <script>
-    document.getElementById('play-btn').addEventListener('click', () => alert('Click a track to load it in the player'));
-    document.getElementById('pause-btn').addEventListener('click', () => alert('Player paused'));
-    document.getElementById('next-track').addEventListener('click', () => alert('Load a track first'));
-  </script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f6ff62"><meta name="description" content="42 Beach Please tracks by SEO Hobby Expert. Explore global music styles, from Afrobeat and Asian folk to house, rap and rock."><title>One World, Many Music Styles — Beach Please</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script></head>
+<body><a class="skip" href="#library">Skip to playlist</a><header><a class="brand" href="#">◎ WORLD GROOVE</a><nav aria-label="Main"><a href="../music/">Batumi playlist ↗</a><a href="../blog/">Blog ↗</a><a href="#library">Record crate ↓</a></nav></header>
+<main><section class="hero"><div><p class="eyebrow">SEO HOBBY EXPERT PRESENTS / VOLUME 02</p><h1>ONE WORLD.<br><span>MANY MUSIC</span><br>STYLES.</h1><p class="intro">One beach. Forty-two different grooves. Take a trip through global sounds — no passport required.</p><a class="button" href="#library">EXPLORE THE GROOVES ↘</a></div><div class="art" aria-hidden="true"><div class="orbit">✦ SOUNDS WITHOUT BORDERS ✦</div><div class="vinyl" id="vinyl"><div class="label">BEACH<br>PLEASE!<small>BORACAY SUNRISE</small></div></div><span class="sticker">42 TRACKS<br>∞ GOOD VIBES</span></div></section>
+<div class="ribbon">AFROBEAT ✦ HOUSE ✦ FOLK ✦ HIP-HOP ✦ DISCO ✦ ROCK ✦ GLOBAL GROOVES</div>
+<section class="collection" id="library"><div class="section-head"><div><p class="eyebrow">PICK YOUR NEXT DESTINATION</p><h2>The record crate<span>.</span></h2></div><label>Find a groove<input type="search" id="search" placeholder="Try jazz, Japanese, Ibiza…"></label></div><div id="filters" class="filters" aria-label="Filter music styles"></div><p id="count" role="status"></p><div id="tracks" class="tracks"></div><noscript>Enable JavaScript to browse this playlist. <a href="https://github.com/dawidmillenium-design/newtaiwandollaringeorgia/tree/main/music2">Open the MP3 folder</a>.</noscript></section>
+<section class="note"><h2>Same sunrise. A world of interpretations.</h2><p>Explore Beach Please (Boracay Sunrise) and Life Is a Beach in 42 versions. Style labels come from the supplied filenames; they describe the musical inspiration of each version.</p><p>Music by <a href="https://suno.com/@seohobbyexpert">SEO Hobby Expert</a> · Stream directly, without an account.</p></section></main>
+<footer>ONE WORLD, MANY MUSIC STYLES ✦ MADE FOR LISTENING EVERYWHERE.</footer>
+<section class="player" aria-label="Music player"><div class="now"><span class="mini-disc" aria-hidden="true">◎</span><div><p class="eyebrow">NOW ON THE TURNTABLE</p><strong id="now-title">Choose your first groove</strong></div></div><audio id="audio" controls preload="none" aria-label="Selected track audio"></audio><div class="transport"><button id="prev" aria-label="Previous track">←</button><button id="next" aria-label="Next track">→</button><button id="shuffle" aria-pressed="false">Shuffle</button><button id="repeat" aria-pressed="false">Repeat</button><button id="share">Share</button></div><p id="message" role="status"></p></section></body></html>

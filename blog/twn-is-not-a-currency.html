@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TWN Is Not a Currency — Blog</title>
+  <meta name="description" content="TWN is not in ISO 4217. How a 1 lari coffee in Batumi ended up labelled '−1,00 TWN' on a bank statement — a firmware bug, not fraud.">
+  <style>
+    body{font-family:Georgia,'Times New Roman',serif;background:#fdfcf8;color:#1c1c1c;line-height:1.75;margin:0}
+    main{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem}
+    h1,h2{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.25}
+    h1{font-size:2rem;margin-bottom:.4rem}
+    .meta{color:#777;font-size:.9rem;margin-bottom:2rem}
+    h2{color:#1f4fd8;margin-top:2.2rem}
+    table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.95rem}
+    td,th{border:1px solid #ddd;padding:.5rem .75rem;text-align:left}
+    blockquote{border-left:4px solid #1f4fd8;background:#eef2ff;margin:1.2rem 0;padding:.8rem 1.2rem}
+    code{background:#eef;padding:.1rem .35rem;border-radius:4px}
+    .back{display:inline-block;margin-bottom:1.5rem;color:#1f4fd8}
+    footer{color:#888;font-size:.85rem;margin-top:3rem;border-top:1px solid #e2e5ea;padding-top:1rem}
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="index.html">← All posts</a>
+  <h1>TWN Is Not a Currency</h1>
+  <p class="meta">2026-09-29 · Batumi, Georgia · Dawid Lisowski</p>
+
+  <p><strong><code>TWN</code> is not a currency.</strong> It is not in ISO 4217. Taiwan's real code is <strong>TWD</strong>; Georgia's is <strong>GEL</strong>; mine at home is <strong>PLN</strong>; where I'd been two weeks earlier was <strong>THB</strong>. <code>TWN</code> belongs to <em>nowhere</em>. The table of suspects:</p>
+
+  <table>
+    <tr><th>Code</th><th>Real?</th><th>Belongs to</th><th>In my story</th></tr>
+    <tr><td><strong>GEL</strong></td><td>✅</td><td>Georgia</td><td>what I actually paid (1,00)</td></tr>
+    <tr><td><strong>TWD</strong></td><td>✅</td><td>Taiwan</td><td>the <em>real</em> Taiwan code — never touched my coffee</td></tr>
+    <tr><td><strong>PLN</strong></td><td>✅</td><td>Poland</td><td>my home currency</td></tr>
+    <tr><td><strong>THB</strong></td><td>✅</td><td>Thailand</td><td>where I was 15 days prior</td></tr>
+    <tr><td><strong>TWN</strong></td><td>❌</td><td>nowhere</td><td>the ghost in the terminal's firmware</td></tr>
+  </table>
+
+  <p>And the number gives it away: <strong>1,00</strong> is my lari, digit for digit. Run the FX sanity check — 1 GEL ≈ 11–12 TWD, so a <em>genuine</em> 1-TWD charge would be ~0.12 zł, pocket change, <strong>not</strong> a coffee. The amount field survived the trip intact; only the currency tag got mangled between the vending terminal, the Georgian acquirer (registered in <strong>Tbilisi</strong>, hence the city mismatch with my <strong>Batumi</strong> tap — normal acquirer noise, not a red flag), and my bank's parser.</p>
+
+  <p><strong>Verdict:</strong> a real, local, legitimate 1 GEL sale. No clone, no Taipei, no fraud report needed. Just a label that detached from the thing. The fix was mundane: keep the receipt, watch the <em>settled</em> zł amount, and ask the bank to relabel the line <strong>GEL</strong> and confirm the FX rate — because a non-existent code can break reconciliation and trip a <em>false</em> fraud flag later.</p>
+
+  <blockquote><strong>Diagnostic rule #2 (the lesson):</strong> when a statement line shows a currency you've never heard of, <em>don't reach for "block card" first — reach for your passport.</em> Cross-check geolocation and merchant descriptor against the amount. Nine times in ten, the drama is metadata, not theft.</blockquote>
+
+  <h2>Batumi-specific notes</h2>
+  <ul>
+    <li>The <strong>boulevard & beach strip</strong> is the most card-friendly part of the city; the <strong>old town</strong> backstreets and the botanical-garden approach cafés are where cash suddenly matters.</li>
+    <li><strong>Parking meters and the new vending kiosks</strong> are card-first and <em>exactly</em> where weird statement metadata tends to surface — cheap terminals with thin firmware, often operated by Tbilisi-registered processors. Don't let that spook you; check the <em>amount</em>.</li>
+    <li><strong>Marshrutkas</strong> to nearby towns pay <strong>cash</strong>, small notes, no change for big bills.</li>
+    <li><strong>Tips</strong>: round up or leave ~10% in cash at sit-down places; card tips aren't always passed on.</li>
+    <li><strong>Beach-side umbrellas/loungers</strong> frequently want cash — agree the number <em>before</em> you sit.</li>
+  </ul>
+
+  <h2>Close</h2>
+  <p>We hand our trust to a chain of invisible boxes — terminal, acquirer, network, issuer, app — each one re-typing what the last said, each one allowed a small error that compounds into a headline like <em>"New Taiwan Dollar"</em> on a Georgian coffee. The lari was real, the coffee was real, the stamps were real; only the three letters were a ghost. Sometimes the scariest line on the screen is the boringest one in the room.</p>
+
+  <footer>— Dawid Lisowski, Batumi, 29 Sept 2026 · Case file: <a href="https://dawidmillenium-design.github.io/Newtaiwandollargeorgia/">Newtaiwandollargeorgia</a> · <a href="index.html">Blog</a> · <a href="../">Site home</a></footer>
+</main>
+</body>
+</html>
